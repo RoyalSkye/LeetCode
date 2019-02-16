@@ -42,22 +42,25 @@ class Solution {
 // 2.perfect solution
 class Solution {
     public List<List<Integer>> threeSum(int[] num) {
-        Arrays.sort(num);  
-        List<List<Integer>> res = new LinkedList<>(); 
-        for (int i = 0; i < num.length-2; i++) {  // the result of i=length-2 and length-1 must larger than i=length-3, since the array has been sorted.
-            if (i == 0 || (i > 0 && num[i] != num[i-1])) {
-                int lo = i+1, hi = num.length-1, sum = 0 - num[i];
-                while (lo < hi) {
-                    if (num[lo] + num[hi] == sum) {
-                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
-                        while (lo < hi && num[lo] == num[lo+1]) lo++;
-                        while (lo < hi && num[hi] == num[hi-1]) hi--;
-                        lo++; hi--;
-                    } else if (num[lo] + num[hi] < sum) lo++;
-                    else hi--;
-               }
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(num);
+        for(int i=0;i<num.length-2;i++){  // the result of i=length-2 and length-1 must larger than i=length-3, since the array has been sorted.
+            if(i > 0 && num[i] == num[i-1]) continue;
+            int sum = 0 - num[i];
+            int low = i + 1, high = num.length - 1;
+            while(low < high){
+                if(num[low] + num[high] == sum){
+                    ans.add(Arrays.asList(num[i],num[low],num[high]));
+                    while(low < high && num[low] == num[low+1]) low++;
+                    while(low < high && num[high] == num[high-1]) high--;
+                    low++;high--;
+                }else if(num[low] + num[high] < sum){
+                    low++;
+                }else{
+                    high--;
+                }
             }
         }
-        return res;
+        return ans;
     }
 }
