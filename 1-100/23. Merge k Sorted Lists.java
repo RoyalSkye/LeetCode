@@ -6,7 +6,8 @@
  *     ListNode(int x) { val = x; }
  * }
  */
-// 1.first try - 172ms - minds concur with Divide and Conquer, but the list used to merge in this method becomes larger and larger with the times of running increases.)
+// 1.first try - O(KN) k is the number of linked lists, and N is the total number of nodes. 172ms
+// minds concur with Divide and Conquer, but the list used to merge in this method becomes larger and larger with the times of running increases.)
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length == 0) return null;
@@ -34,7 +35,7 @@ class Solution {
     }
 }
 
-// 2.second try - Divide And Conquer（5ms) - best solution - just optimize for loop compared with the first try.
+// 2.second try - Divide And Conquer O(NlogK) 5ms - best solution - just optimize for loop compared with the first try.
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length == 0) return null;
