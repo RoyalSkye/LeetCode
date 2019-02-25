@@ -32,7 +32,7 @@ class Solution {
     //Minds: non-trivial
     //A[0] A[1] ... A[i-1] | A[i] A[i+1] ... A[m-1]
     //B[0] B[1] ... B[j-1] | B[j] B[j+1] ... B[n-1]
-    //To find the Median, we must ensure length(left) == length(left) == length(right) or + 1, namely i+j=m-i+n-j(+1)
+    //To find the Median, we must ensure length(left) == length(right) or + 1, namely i+j=m-i+n-j(+1)
     //and A[i-1] <= B[j] and B[j-1] <= A[i]
     
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
