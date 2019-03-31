@@ -89,6 +89,23 @@ class Solution {
     }
 }
 
+// rectangle start from each possible ele
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        int ans = 0;
+        if(heights.length == 0) return 0;
+        for(int i=0;i<heights.length;i++){
+            int width = heights[i];
+            for(int j=i;j<heights.length;j++){
+                if(heights[j] == 0) break;
+                width = Math.min(width, heights[j]);
+                ans = Math.max(ans, width*(j-i+1));
+            }
+        }
+        return ans;
+    }
+}
+
 // 3.divide and conquer
 // Time: Average :O(Nlog(N)) Worst case: O(N^2) If the numbers in the array are sorted, we don't gain the advantage of divide and conquer.
 // Space: O(NRecursion with worst case depth N
