@@ -36,7 +36,9 @@ class Solution {
         while (!queue.isEmpty()) {
             int size = queue.size();
             /* use linkedlist to control time complexity of addFirst to O(1) */
-            LinkedList<Integer> tempList = new LinkedList<>();
+            LinkedList<Integer> tempList = new LinkedList<>(); 
+            //arraylist, 需要O(n), but LinkedList只需要O(1)就可以插入头部或者尾部
+            //初始化LinkedList的时候不能用List interface, 要直接用LinkedList,不然找不到addFirst/removeFirst这些方法
             for (int i = 0; i < size; i++) {
                 TreeNode curNode = queue.poll();
                 if (reverse) tempList.addFirst(curNode.val);
