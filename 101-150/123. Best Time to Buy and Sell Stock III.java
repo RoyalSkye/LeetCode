@@ -20,7 +20,7 @@ class Solution {
     }
 } 
 
-// 2.amazing solution withTime O(N) and Space O(1) - best solution - difficult to understand
+// 2.amazing solution with Time O(N) and Space O(1) - best solution - difficult to understand
 class Solution {
     public int maxProfit(int[] prices) {
         int buy1 = Integer.MAX_VALUE, buy2 = Integer.MAX_VALUE, sell1 = 0, sell2 = 0;
