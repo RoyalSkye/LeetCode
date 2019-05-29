@@ -10,5 +10,6 @@ class Solution {
 }
 
 // 2.Math (Set) - 2(a + b + c) - (a + a + b + b + c) = c
+// bugs: Math.MAX_VALUE/Math.MIN_VALUE
 
 // 3.HashMap 1st put then 2nd remove
