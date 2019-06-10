@@ -33,6 +33,19 @@ class Solution {
     }
 }
 
+// or (the same way) Kadane's algorithm - inspired by lc152
+class Solution {
+    public int maxSubArray(int[] nums) {
+        if(nums.length == 0) return 0;
+        int ans = nums[0], max = nums[0];
+        for(int i=1;i<nums.length;i++){
+            max = Math.max(max+nums[i], nums[i]);
+            ans = Math.max(ans, max);
+        }
+        return ans;
+    }
+}
+
 // 3.divide and conquer - maybe O(NlogN)
 // any contiguous subarray A[i...j 􏰀of A[low...high􏰀] must lie in exactly one of the following places:
 // entirely in the subarray A[low, mid], so that low 􏰎 i 􏰎<= j 􏰎<= mid, 
@@ -66,4 +79,3 @@ public:
         return res;
     }
 };
-

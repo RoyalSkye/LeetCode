@@ -12,7 +12,7 @@ class Solution {
     }
 }
 
-// 2.bit manipulation
+// 2.bit manipulation - hard to understand
 class Solution {
     //00 - 10 - 01 - 00
     public int singleNumber(int[] nums) {
@@ -29,7 +29,13 @@ class Solution {
 // 000 - 100 - 010 - 001 -  - 000
 class Solution {
     public int singleNumber(int[] nums) {
-        
+        int na = 0, nb = 0, nc = 0;
+        for(int i = 0; i < n; i++){
+            nb = nb ^ (nums[i] & na);
+            na = (na ^ (nums[i]) & ~nc;
+            nc = nc ^ (nums[i] & ~na & ~nb);
+        }
+        return na & ~nb & ~nc;
     }
 }
 
