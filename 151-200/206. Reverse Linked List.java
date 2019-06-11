@@ -42,7 +42,7 @@ class Solution {
     }
 }
 
-// 2.Recursive - upvote
+// 2.Iterative 
 class Solution {
     public ListNode reverseList(ListNode head) {
         if(head == null || head.next == null) return head;
@@ -59,17 +59,19 @@ class Solution {
     }
 }
 
-// or
+// or - upvote
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode prev = null;
-        ListNode curr = head;
-        while (curr != null) {
-            ListNode nextTemp = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = nextTemp;
+        if(head==null || head.next==null) return head;
+        ListNode cur = head;
+        ListNode pre = null;
+        ListNode next = null;
+        while(cur!=null){
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
-        return prev;
+        return pre;
     }
 }
