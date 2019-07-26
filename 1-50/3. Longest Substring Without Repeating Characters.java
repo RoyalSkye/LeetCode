@@ -16,3 +16,21 @@ class Solution {
         return result;
     }
 }
+
+// the same approach, diff style
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        int start = 0, end = 0, max = 0;
+        char[] c = s.toCharArray();
+        while(end < s.length()){
+            if(map.containsKey(c[end]) && map.get(c[end]) >= start){
+                max = Math.max(max, end - start);
+                start = map.get(c[end]) + 1;
+            }
+            map.put(c[end], end);
+            end++;
+        }
+        return Math.max(max, end-start);
+    }
+}

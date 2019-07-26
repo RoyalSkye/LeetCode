@@ -1,23 +1,16 @@
 // 1.Map<Character,Character>  map.put(')','(') also works.
 class Solution {
     public boolean isValid(String s) {
-        boolean ans = true;
-        if(s.isEmpty()) return true;
-        Map<Character,Integer> map1 = new HashMap<>();
-        Map<Character,Integer> map2 = new HashMap<>();
-        map1.put('(',1);map1.put('{',2);map1.put('[',3);
-        map2.put(')',1);map2.put('}',2);map2.put(']',3);
-        Stack<Character> stack = new Stack<Character>();
-        for(int i=0;i<s.length();i++){
-            if(map1.containsKey(s.charAt(i))){  //push
-                stack.push(s.charAt(i));
-                continue;
-            }else if(map2.containsKey(s.charAt(i))){  //pop
-                if(stack.empty() || map1.get(stack.pop())!=map2.get(s.charAt(i))) return false;
-            }
+        Map<Character, Character> map = new HashMap<>();
+        map.put(')', '(');map.put('}', '{');map.put(']', '[');
+        Stack<Character> stack = new Stack<>();
+        char[] c = s.toCharArray();
+        for(int i=0;i<c.length;i++){
+            if(map.containsKey(c[i])){
+                if(stack.isEmpty() || stack.pop() != map.get(c[i])) return false;
+            }else stack.push(c[i]);
         }
-        if(!stack.empty()) return false;
-        return ans;
+        return stack.isEmpty();
     }
 }
 
