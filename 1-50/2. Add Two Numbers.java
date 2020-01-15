@@ -65,3 +65,37 @@ class Solution {
 		return result.next;
 	}
 }
+
+// 01/15/2020
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode first1 = l1;
+        ListNode first2 = l2;
+        ListNode dummy = new ListNode(0);
+        ListNode first = dummy;
+        int remain = 0;
+        while(first1 != null || first2 != null) {
+            int sum = remain;
+            if(first1 != null) {
+                sum += first1.val;
+                first1 = first1.next;
+            }
+            if (first2 != null) {
+                sum += first2.val;
+                first2 = first2.next;
+            }
+            remain = sum / 10;
+            first.next = new ListNode(sum % 10);
+            first = first.next;
+        }
+        if(remain != 0) {
+            first.next = new ListNode(remain);
+        }
+        return dummy.next;
+    }
+}
+
+//follow up:
+1. lc445: What if the the digits in the linked list are stored in non-reversed order? For example:
+(3→4→2)+(4→6→5)=8→0→7
+2. lc445: What if you cannot modify the input lists? In other words, reversing the lists is not allowed.
